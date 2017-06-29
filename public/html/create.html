@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Noty</title>
+		<meta name="description" content="Noty - Alle Notizen auf einen Blick" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    	<link rel="stylesheet" type="text/css" href="../css/lila-mist.css" id="defaultstyle">
+		<link rel="alternate stylesheet" href="../css/blue-ocean.css" type="text/css"  id="bluestyle">
+		<!--[if IE]>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<![endif]-->
+	</head>
+  	<body>
+		<header id="main-header">
+			<div class='logo'>
+				<div class='app-name'>
+					<h3>Noty</h3>
+				</div>
+			</div>
+			<div class="styleSwitcher">
+				<span>Style wählen:</span>
+				<select id="styleswitcher">
+					<option value="css/lila-mist.css">Lila</option>
+					<option value="css/blue-ocean.css">Blue</option>
+				</select>
+			</div>
+		</header>
+		<div class="spacer"></div>
+			<main>
+				<div class="notes-container">
+					<div class="form-content-item">
+						<div class="title">
+							<h1>Neue Notiz</h1>
+						</div>
+						<label for="title">Titel<i class="required">*</i></label>
+						<input type="text" name="title" id="title" required autofocus="">
+						<label for="description">Beschreibung</label>
+						<textarea name="text" id="description"></textarea>
+						<label for="dueDate" class="">Fälligkeitsdatum<i class="required">*</i></label><br>
+						<input type="date" name="dueDate" id="dueDate" required><br>
+						<div class="importance">
+							<label for="importance">Wichtigkeit</label>
+							<select name="importance" id="importance">
+								<option value="1">Prio 1</option>
+								<option value="2">Prio 2</option>
+								<option value="3">Prio 3</option>
+								<option value="4">Prio 4</option>
+								<option value="5">Prio 5</option>
+							</select>
+						</div>
+						<div id="uniqId"></div>
+						<div class="buttonbar">
+							<div class="buttonbar-item">
+								<a href="index.html" id="cancel" class="btn btn-cancel">Abbrechen</a>
+							</div>
+							<div class="buttonbar-item">
+								<button id="saveNote" class="header-add btn btn-add">
+									<span class="icon-doc-new">Notiz hinzufügen</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script src="../js/libs/jquery-2.1.4.min.js"></script>
+		<script src="../js/libs/handlebars-v4.0.10.js"></script>
+		<script src="../js/libs/moment-v2.18.1.js"></script>
+		<script src="../js/services/restClient.js"></script>
+		<script src="../js/controllers/create.js"></script>
+		<script src="../js/controllers/styleswitcher.js"></script>
+		<script src="../js/controllers/styleswitcher.js"></script>
+	</body>
+</html>

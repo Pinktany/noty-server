@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Noty</title>
+        <meta name="description" content="Noty - Alle Notizen auf einen Blick" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/lila-mist.css" id="defaultstyle">
+        <link rel="alternate stylesheet" href="../css/blue-ocean.css" type="text/css" id="bluestyle">
+        <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <![endif]-->
+    </head>
+    <body>
+        <header id="main-header">
+            <div class='logo'>
+                <div class='app-name'>
+                    <h3>Noty</h3>
+                </div>
+            </div>
+            <div class="styleSwitcher">
+                <span>Style wählen:</span>
+                <select id="styleswitcher">
+                    <option value="css/lila-mist.css">Lila Mist</option>
+                    <option value="css/blue-ocean.css">Blue Ocean</option>
+                </select>
+            </div>
+        </header>
+        <nav>
+            <div class="info">
+                <div class="addNotes">
+                    <a href="create.html" id="add-note" class="header-add btn btn-new">Neue Notiz</a>
+                </div>
+                <div class="sortOrder">
+                    <ul>
+                        <li id="created_on" data-sort="sortByCreationDate">Erstellungsdatum</li>
+                        <li id="due" data-sort="sortByDueDate">Fälligkeitsdatum</li>
+                        <li id="importance" data-sort="sortByImportance">Wichtigkeit</li>
+                    </ul>
+                </div>
+                <div class="finishedNotes">
+                    <button id="showFinished" class="btn-finished">
+                        <span class="">Erledigte anzeigen</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <div class='notes-container'></div>
+        </main>
+        <script id="completed-notes" type="text/x-handlebars-template">
+            <div id="notes">
+                {{#notes}}
+                <div class='note-item'>
+                    <div class='note-infos'>
+                        <div class="note-action">
+                            <input class="finished" type="checkbox" data-noteid='{{this.id}}>
+                                </div>
+                                <div class='note-content'>
+                            <h4>{{this.title}}</h4>
+                            <p>{{this.description}}</p>
+                            <p>{{this.importance}}</p>
+                            <p class="uniqId">{{this.id}}</p>
+                        </div>
+                        <div class='note-meta'>
+                            <p>Erstellt am: {{this.creationDate}}</p>
+                            <p>Erledigen bis: {{this.dueDate}}</p>
+                        </div>
+                    </div>
+                    <div class='note-properties'>
+                        <a href="edit.html#{{this.id}}"><button id='note-edit' class='btn-edit'>
+                            <span class='icon-note-edit'></span>
+                        </button></a>
+                        <button id='note-delete' class='btn-delete' data-noteid='{{this.id}}'>
+                            <span class='icon-note-delete'></span>
+                        </button>
+                    </div>
+                </div>
+                {{/notes}}
+            </div>
+        </script>
+        <script id="note-item" type="text/x-handlebars-template">
+            <div id="notes">
+                {{#notes}}
+                <div class='note-item'>
+                    <div class='note-infos'>
+                        <div class="note-action">
+                            <input class="finished" type="checkbox" data-noteid='{{this.id}}'>
+                        </div>
+                        <div class='note-content'>
+                            <h4>{{this.title}}</h4>
+                            <p>{{this.description}}</p>
+                            <p>{{this.importance}}</p>
+                            <p class="uniqId">{{this.id}}</p>
+                        </div>
+                        <div class='note-meta'>
+                            <p>Erstellt am: {{this.created_on}}</p>
+                            <p>Erledigen bis: {{this.due}}</p>
+                        </div>
+                    </div>
+                    <div class='note-properties'>
+                        <a href="edit.html#{{this.id}}"><button id='note-edit' class='btn-edit'>
+                            <span class='icon-note-edit'></span>
+                        </button></a>
+                        <button id='note-delete' class='btn-delete' data-noteid='{{this.id}}'>
+                            <span class='icon-note-delete'></span>
+                        </button>
+                    </div>
+                </div>
+                {{/notes}}
+            </div>
+        </script>
+        <script src="../js/libs/jquery-2.1.4.min.js"></script>
+        <script src="../js/libs/handlebars-v4.0.10.js"></script>
+        <script src="../js/services/restClient.js"></script>
+        <script src="../js/libs/handlebars-v4.0.10.js"></script>
+        <script src="../js/libs/moment-v2.18.1.js"></script>
+        <script src="../js/controllers/indexController.js"></script>
+        <script src="../js/controllers/styleswitcher.js"></script>
+        <script src="../js/services/noteStorage.js"></script>
+    </body>
+</html>
+
