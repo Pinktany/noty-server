@@ -7,7 +7,7 @@ router.put("/edit/:id/", notes.editNote);
 router.put("/check/:id/",notes.checkNote);
 router.get("/",notes.getNotes);
 router.get("/:id/",notes.getNoteById);
-router.delete("/notes/:id/",notes.deleteNote);
+router.delete("/:id/",notes.deleteNote);
 
 
 

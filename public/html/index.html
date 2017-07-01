@@ -15,8 +15,8 @@
     </head>
     <body>
         <header id="main-header">
-            <div class='logo'>
-                <div class='app-name'>
+            <div class="logo">
+                <div class="app-name">
                     <h3>Noty</h3>
                 </div>
             </div>
@@ -35,8 +35,8 @@
                 </div>
                 <div class="sortOrder">
                     <ul>
-                        <li id="created_on" data-sort="sortByCreationDate">Erstellungsdatum</li>
-                        <li id="due" data-sort="sortByDueDate">Fälligkeitsdatum</li>
+                        <li id="creationDate" data-sort="sortByCreationDate">Erstellungsdatum</li>
+                        <li id="dueDate" data-sort="sortByDueDate">Fälligkeitsdatum</li>
                         <li id="importance" data-sort="sortByImportance">Wichtigkeit</li>
                     </ul>
                 </div>
@@ -48,64 +48,33 @@
             </div>
         </nav>
         <main>
-            <div class='notes-container'></div>
+            <div class="notes-container"></div>
         </main>
-        <script id="completed-notes" type="text/x-handlebars-template">
+        <script id="note-item" type="text/x-handlebars-template">
             <div id="notes">
                 {{#notes}}
-                <div class='note-item'>
-                    <div class='note-infos'>
+                <div class="note-item">
+                    <div class="note-infos">
                         <div class="note-action">
-                            <input class="finished" type="checkbox" data-noteid='{{this.id}}>
-                                </div>
-                                <div class='note-content'>
+                            <input class="finished" type="checkbox" data-noteid="{{this.id}}">
+                        </div>
+                        <div class="note-content">
                             <h4>{{this.title}}</h4>
                             <p>{{this.description}}</p>
                             <p>{{this.importance}}</p>
                             <p class="uniqId">{{this.id}}</p>
                         </div>
-                        <div class='note-meta'>
+                        <div class="note-meta">
                             <p>Erstellt am: {{this.creationDate}}</p>
                             <p>Erledigen bis: {{this.dueDate}}</p>
                         </div>
                     </div>
-                    <div class='note-properties'>
-                        <a href="edit.html#{{this.id}}"><button id='note-edit' class='btn-edit'>
-                            <span class='icon-note-edit'></span>
+                    <div class="note-properties">
+                        <a href="edit.html#{{this.id}}"><button id="note-edit" class="btn-edit">
+                            <span class="icon-note-edit"></span>
                         </button></a>
-                        <button id='note-delete' class='btn-delete' data-noteid='{{this.id}}'>
-                            <span class='icon-note-delete'></span>
-                        </button>
-                    </div>
-                </div>
-                {{/notes}}
-            </div>
-        </script>
-        <script id="note-item" type="text/x-handlebars-template">
-            <div id="notes">
-                {{#notes}}
-                <div class='note-item'>
-                    <div class='note-infos'>
-                        <div class="note-action">
-                            <input class="finished" type="checkbox" data-noteid='{{this.id}}'>
-                        </div>
-                        <div class='note-content'>
-                            <h4>{{this.title}}</h4>
-                            <p>{{this.description}}</p>
-                            <p>{{this.importance}}</p>
-                            <p class="uniqId">{{this.id}}</p>
-                        </div>
-                        <div class='note-meta'>
-                            <p>Erstellt am: {{this.created_on}}</p>
-                            <p>Erledigen bis: {{this.due}}</p>
-                        </div>
-                    </div>
-                    <div class='note-properties'>
-                        <a href="edit.html#{{this.id}}"><button id='note-edit' class='btn-edit'>
-                            <span class='icon-note-edit'></span>
-                        </button></a>
-                        <button id='note-delete' class='btn-delete' data-noteid='{{this.id}}'>
-                            <span class='icon-note-delete'></span>
+                        <button id="note-delete" class="btn-delete" data-noteid="{{this._id}}">
+                            <span class="icon-note-delete"></span>
                         </button>
                     </div>
                 </div>

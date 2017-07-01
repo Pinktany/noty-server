@@ -1,8 +1,10 @@
+"use strict";
+
 function getDefaultStyle() {
-    let defaultStyle = localStorage.getItem('defaultStyle');
+    let defaultStyle = localStorage.getItem("defaultStyle");
     if (!defaultStyle) {
-        localStorage.setItem('defaultStyle', 'css/lila-mist.css');
-        defaultStyle = localStorage.getItem('defaultStyle');
+        localStorage.setItem("defaultStyle", "css/lila-mist.css");
+        defaultStyle = localStorage.getItem("defaultStyle");
     }
     return defaultStyle;
 }
@@ -11,7 +13,7 @@ let styleSwitcher = document.getElementById("styleswitcher");
 let defaultStyle = getDefaultStyle();
 $("#styleswitcher").val(defaultStyle);
 activateStyle(defaultStyle);
-styleSwitcher.addEventListener('change', onStyleChanged);
+styleSwitcher.addEventListener("change", onStyleChanged);
 
 function onStyleChanged() {
     let selectedStyle = $("#styleswitcher").val();
@@ -20,9 +22,9 @@ function onStyleChanged() {
 }
 
 function activateStyle(style) {
-    document.getElementById('defaultstyle').href = style;
+    document.getElementById("defaultstyle").href = style;
 }
 
 function setDefaultStyle(style) {
-    localStorage.setItem('defaultStyle', style);
+    localStorage.setItem("defaultStyle", style);
 }

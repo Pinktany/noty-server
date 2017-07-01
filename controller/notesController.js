@@ -3,14 +3,14 @@ const noteStorage = require("../services/notesStorage.js");
 
 module.exports.addNote = function(req, res){
     const pre = req.body;
-    noteStorage.addNote(pre.title,pre.desc,pre.importance,pre.due,(err,dbNote)=>{
+    noteStorage.addNote(pre.title,pre.description,pre.importance,pre.dueDate,(err,dbNote)=>{
         res.json(dbNote);
     })
 };
 
 module.exports.editNote = function(req, res){
     const pre = req.body;
-    noteStorage.editNote(req.params.id, pre.title,pre.desc,pre.importance,pre.due,(err,dbNote)=>{})
+    noteStorage.editNote(req.params.id, pre.title,pre.description,pre.importance,pre.dueDate,(err,dbNote)=>{})
 };
 
 module.exports.checkNote = function(req, res){

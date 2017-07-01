@@ -1,21 +1,21 @@
 ;(function (services,$) {
     const dataContent = 'dataType: "json",contentType: "application/json",';
 
-    function addNote(title,desc,importance,due){
+    function addNote(title,description,importance,dueDate){
        return $.ajax({
             dataContent,
             method: "POST",
             url: "/notes/add/",
-            data: {title,desc,importance,due}
+            data: {title,description,importance,dueDate}
         });
     }
 
-    function editNote(id,title,desc,importance,due){
+    function editNote(id,title,description,importance,dueDate){
         return $.ajax({
             dataContent,
             method: "PUT",
             url: "/notes/edit/"+id,
-            data: {title,desc,importance,due}
+            data: {title,description,importance,dueDate}
         });
     }
 

@@ -1,10 +1,11 @@
 {
-  "name": "Projekt1",
+  "name": "Noty",
   "version": "1.0.0",
-  "private": true,
+  "description": "Alle Notizen auf einen Blick",
   "scripts": {
     "start": "node index.js"
   },
+  "author": "Tanja Sennhauser",
   "dependencies": {
     "body-parser": "~1.17.1",
     "express": "~4.15.2",

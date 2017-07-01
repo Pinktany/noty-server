@@ -1,20 +1,22 @@
 const Datastore = require('nedb');
 const db = new Datastore({filename: './data/notes.db', autoload: true});
+const moment = require("../public/js/libs/moment-v2.18.1");
 
 class Note {
-    constructor(title, desc, importance, due) {
+    constructor(title, description, importance, dueDate) {
         this.title = title;
-        this.desc = desc;
+        this.description = description;
         this.importance = importance;
-        this.due = due;
-        this.created_on = new Date();
-        this.checked = false;
-        this.checked_on = false;
+        this.dueDate = dueDate;
+        this.creationDate = moment().format('YYYY-MM-DD');
+        this.finished = false;
+        this.finished_on = false;
+        this.id = Math.floor(Math.random() * 10000);
     }
 }
 
-function addNote(title, desc, importance, due, callback) {
-    let note = new Note(title, desc, importance, due);
+function addNote(title, description, importance, dueDate, callback) {
+    let note = new Note(title, description, importance, dueDate);
 
     db.insert(note, function (err, dbNote) {
         if (callback) {
@@ -24,7 +26,7 @@ function addNote(title, desc, importance, due, callback) {
 }
 
 function checkNote(id, callback) {
-    db.update({_id: id}, {$set: {"checked": true, "checked_on": moment.now()}}, {}, function (err, dbNote) {
+    db.update({_id: id}, {$set: {"finished": true, "finished_on": moment.now()}}, {}, function (err, dbNote) {
         if (callback) {
             callback(err, dbNote);
         }
@@ -39,7 +41,7 @@ function getNoteById(id, callback) {
     })
 }
 
-function getNotes(noteSort, noteOrder, noteFilter = "checked", callback) {
+function getNotes(noteSort, noteOrder, noteFilter = "finished", callback) {
     db.find({},function (err, dbNote) {
         if (callback) {
             let filt_notes = dbNote.filter(x => x[noteFilter] ? x[noteFilter] === false : true);
@@ -59,13 +61,13 @@ function getNotes(noteSort, noteOrder, noteFilter = "checked", callback) {
     });
 }
 
-function editNote(id, title, desc, importance, due, callback) {
+function editNote(id, title, description, importance, dueDate, callback) {
     db.update({_id: id}, {
         $set: {
             "title": title,
-            "desc": desc,
+            "description": description,
             "importance": importance,
-            "due": due
+            "dueDate": dueDate
         }
     }, {}, function (err, dbNote) {
         if (callback) {
@@ -74,15 +76,8 @@ function editNote(id, title, desc, importance, due, callback) {
     });
 }
 
-function deleteNote(id, title, desc, importance, due, callback) {
-    db.update({_id: id}, {
-        $set: {
-            "title": title,
-            "desc": desc,
-            "importance": importance,
-            "due": due
-        }
-    }, {}, function (err, dbNote) {
+function deleteNote(id, callback) {
+    db.remove({_id: id}, {}, function (err, dbNote) {
         if (callback) {
             callback(err, dbNote)
         }

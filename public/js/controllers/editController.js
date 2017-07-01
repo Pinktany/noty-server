@@ -1,3 +1,5 @@
+"use strict";
+
 let notes = localStorage.getItem("notes");
 
 if( !notes )
@@ -13,16 +15,16 @@ console.log(notes);
 if (window.location.hash) {
 
     const id = window.location.hash.substr(1);
-    const index = notes.findIndex(x => x.id == id);
+    const index = notes.findIndex(x => x.id === id);
 
-    $('#title').val(notes[index].title);
-    $('#description').val(notes[index].description);
-    $('#dueDate').val(notes[index].dueDate);
-    $('#importance').val(notes[index].importance);
+    $("#title").val(notes[index].title);
+    $("#description").val(notes[index].description);
+    $("#dueDate").val(notes[index].dueDate);
+    $("#importance").val(notes[index].importance);
 }
 
 //Update Note
-$( ".update" ).click(function() {
+$(".update").click(function() {
     updateNote();
 });
 
