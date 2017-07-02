@@ -13,8 +13,8 @@ module.exports.editNote = function(req, res){
     noteStorage.editNote(req.params.id, pre.title,pre.description,pre.importance,pre.dueDate,(err,dbNote)=>{})
 };
 
-module.exports.checkNote = function(req, res){
-    noteStorage.checkNote(req.params.id,(err,dbNote)=>{})
+module.exports.finishNote = function(req, res){
+    noteStorage.finishNote(req.params.id,(err,dbNote)=>{})
 };
 
 module.exports.getNotes = function(req, res){

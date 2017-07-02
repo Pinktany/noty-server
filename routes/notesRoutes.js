@@ -4,7 +4,7 @@ const notes = require('../controller/notesController.js');
 
 router.post("/add/", notes.addNote);
 router.put("/edit/:id/", notes.editNote);
-router.put("/check/:id/",notes.checkNote);
+router.put("/check/:id/",notes.finishNote);
 router.get("/",notes.getNotes);
 router.get("/:id/",notes.getNoteById);
 router.delete("/:id/",notes.deleteNote);

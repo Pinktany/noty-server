@@ -25,7 +25,7 @@ function addNote(title, description, importance, dueDate, callback) {
     });
 }
 
-function checkNote(id, callback) {
+function finishNote(id, callback) {
     db.update({_id: id}, {$set: {"finished": true, "finished_on": moment.now()}}, {}, function (err, dbNote) {
         if (callback) {
             callback(err, dbNote);
@@ -87,7 +87,7 @@ function deleteNote(id, callback) {
 module.exports = {
     addNote: addNote,
     editNote: editNote,
-    checkNote: checkNote,
+    finishNote: finishNote,
     getNotes: getNotes,
     getNoteById: getNoteById,
     deleteNote: deleteNote

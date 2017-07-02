@@ -19,11 +19,11 @@
         });
     }
 
-    function checkNote(id){
+    function finishNote(id){
         return $.ajax({
             dataContent,
             method: "PUT",
-            url: "/notes/check/"+id
+            url: "/notes/"+id
         });
     }
 
@@ -55,7 +55,7 @@
     services.restClient = {
         addNote : addNote,
         editNote : editNote,
-        checkNote : checkNote,
+        finishNote : finishNote,
         getAllNotes : getNotes,
         getNoteById : getNoteById,
         deleteNote: deleteNote
